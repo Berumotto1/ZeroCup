@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>零杯主界面</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+
+        #container {
+            width: 960px;
+            height: 640px;
+            border: 3px solid #333;
+            overflow: hidden;
+            position: relative;
+            /*  ???  */
+        }
+
+        #list {
+            width: 6720px;
+            height: 640px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        #list img {
+            float: left;
+        }
+
+        #buttons {
+            position: absolute;
+            height: 10px;
+            width: 100px;
+            z-index: 2;
+            bottom: 20px;
+            left: 440px;
+        }
+
+        #buttons span {
+            cursor: pointer;
+            float: left;
+            border: 1px solid #fff;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            margin-right: 5px;
+        }
+
+        #buttons .on {
+            background: orangered;
+        }
+
+        .arrow {
+            cursor: pointer;
+            display: none;
+            line-height: 39px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            z-index: 2;
+            top: 280px;
+            background-color: RGBA(0, 0, 0, .3);
+            color: #fff;
+        }
+
+        .arrow :hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+
+        #container:hover .arrow {
+            display: block;
+        }
+
+        #prev {
+            left: 20px;
+        }
+
+        #next {
+            right: 20px;
+        }
+
+        .img {
+            width: 960px;
+            height: 640px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var container = document.getElementById('container');
+            var list = document.getElementById('list');
+            var buttons = document.getElementById('buttons').getElementsByTagName('span');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+
+            var index = 1;
+            var animated=false;//标志动画是否运行
+
+            var timer;
+
+            function showButton() {
+
+                for (var i = 0; i < buttons.length; i++) {
+                    if (buttons[i].className == 'on') {
+                        buttons[i].className = '';
+                        break;
+                    }
+                }
+                buttons[index - 1].className = 'on';
+            }
+
+
+            function animate(offset) {
+
+
+                animated=true;
+                var newleft = parseInt(list.style.left) + offset;
+
+                var time = 300;//位移总时间
+                var interval = 3;//位移间隔时间
+
+                var times = time / interval;
+
+                var speed = offset / times;
+
+                function go() {
+                    if (speed < 0 && parseInt(list.style.left) > newleft|| speed > 0 && parseInt(list.style.left) <newleft) {
+                        list.style.left = parseInt(list.style.left) + speed + 'px';
+                        // 设置定时器
+                        setTimeout(go,interval);
+                    }
+                    else {
+                        animated=false;
+                        list.style.left = newleft + 'px';
+                        if (newleft > -960) {
+                            list.style.left = -4800 + 'px';
+                        }
+                        if (newleft < -4800) {
+                            list.style.left = -960 + 'px';
+                        }
+                    }
+                }
+                go();
+
+                // list.style.left=parseInt(list.style.left)+offset+'px';
+
+            }
+
+
+            function play()
+            {
+                // setInterval 可以一直执行
+                timer=setInterval(function(){
+                    next.onclick();
+                },2000);
+            }
+
+            function stop()
+            {
+                clearInterval(timer);
+
+            }
+
+            next.onclick = function () {
+                //向左移动六百像素
+                if (index == 5) {
+                    index = 1;
+                }
+                else {
+                    index = index + 1;
+                }
+
+                showButton();
+                if(!animated)
+                animate(-960);
+                //list.style.left=parseInt(list.style.left)-600+'px';
+            }
+
+            prev.onclick = function () {
+                if (index == 1) {
+                    index = 5
+                }
+                else {
+                    index -= 1;
+                }
+
+                showButton();
+                if(!animated)
+                animate(960);
+                //向右移动六百像素
+                //list.style.left=parseInt(list.style.left)+600+'px';
+            }
+
+            for (var i = 0; i < buttons.length; i++) {
+
+                buttons[i].onclick = function () {
+                    if (this.className == 'on') return;
+                    var myIndex = parseInt(this.getAttribute('index'));
+                    if(!animated)
+                    animate((myIndex - index) * (-960));
+                    index = myIndex;
+                    showButton();
+                    // debugger; /* 断点 */
+                }
+
+            }
+
+            container.onmouseover=stop;
+            container.onmouseout=play;
+            play();
+        }
+    </script>
+</head>
+
+
+
+<body>
+    <div id="container">
+        <div id="list" style="left:-960px">
+            <img src="picture5.jpg" alt="5" class="img">
+            <img src="picture1.jpg" alt="1" class="img">
+            <img src="picture2.jpg" alt="2" class="img">
+            <img src="picture3.jpg" alt="3" class="img">
+            <img src="picture4.jpg" alt="4" class="img">
+            <img src="picture5.jpg" alt="5" class="img">
+            <img src="picture1.jpg" alt="1" class="img">
+
+        </div>
+
+        <div id="buttons">
+            <span index="1" class='on'></span>
+            <span index="2" class></span>
+            <span index="3" class></span>
+            <span index="4" class></span>
+            <span index="5" class></span>
+
+
+        </div>
+
+        <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+        <a href="javascript:;" id="next" class="arrow">&gt;</a>
+
+
+    </div>
+
+</body>
+
+</html>
