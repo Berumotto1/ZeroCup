@@ -1,0 +1,42 @@
+.navigation{
+    position: relative;
+    left: 0px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+}
+
+.navigation ul{
+    
+    margin: 0;
+    padding: 0;
+
+}
+
+.navigation ul li{
+    background-color: whitesmoke;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    list-style: none;
+    float: left;  /* 变为横向 */
+    margin-left: 2px;
+    margin-top: 10px;
+    line-height: 30px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.navigation ul li:hover{
+
+    transition: 30ms;
+    background: burlywood;
+
+}
+
+.navigation ul li a{
+    text-decoration: none;
+    color: blueviolet;
+
+}

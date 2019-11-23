@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <link type="text/css" href="navigation.css" rel="stylesheet">
+    <style type="text/css">
+    
+        .total {
+            width: 100%;
+            height: 100%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .cle::after {
+            height: 0;
+            clear: both;
+            visibility: hidden;
+            display: none;
+            content: '.';
+        }
+
+        @keyframes rightHeight {
+            from {
+                height: 0;
+                margin-top: 50px;
+                opacity: 0;
+            }
+            to {
+                height: 100px;
+                margin-top: 20px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes liBg {
+            from {
+                background: #442222;
+                opacity: 0;
+                left: -20px;
+                height: 0;
+            }
+
+            to {
+                background: #f4f4f4;
+                opacity: 1;
+                left: 0;
+                height: 30px;
+            }
+        }
+
+
+
+
+        .left {
+            float: left;
+            margin-left: 100px !important;
+            width: 600px;
+            /* background: #eee; */
+            height: 100px;
+            border: 1px solid #a6a6a6;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 3px 3px 17px #A6A6A6;
+            overflow: hidden;
+            animation: rightHeight 0.5s;
+            font-size: 14px;
+            
+        }
+
+
+        .right {
+            
+            float: left;
+            margin-left: 100px !important;
+            width: 600px;
+            margin: 20px auto;
+            border-radius: 5px;
+            /* background: #eee; */
+            border: 1px solid #a6a6a6;
+
+
+        }
+
+        .right ul {
+            margin: 10px;
+            display: block;
+            clear: both;
+        }
+
+        .right ul li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            line-height: 30px;
+            height: 30px;
+            border-radius: 5px;
+            box-shadow: 3px 3px 17px #A6A6A6;
+            padding: 0 5px;
+            font-size: 12px;
+            border: 1px solid #a6a6a6;
+            animation: liBg 0.3s;
+            position: relative;
+            transition: color 0.5s;
+
+        }
+
+        .inputSty {
+            width: 90%;
+            height: 30px;
+            display: block;
+            color: #666;
+            border: 1px solid #ddd;
+            padding-left: 5px;
+            line-height: 30px;
+            font-size: 12px;
+            clear: both;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        .btnSty {
+            width: 30%;
+            height: 25px;
+            margin: 0 auto;
+            display: block;
+            cursor: pointer;
+            transition: width 0.2s height 0.2s;
+        }
+
+        .btnSty:hover {
+            width: 25%;
+            height: 30px;
+
+        }
+
+
+
+        
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="back" style="position: absolute; width: 100%; height: 100%; z-index: -1;">
+            <img src="picture5.jpg" height="100%" width="100%" />
+        </div>>
+
+    <div class="navigation" style="position: fixed; z-index: 9999; left: 12px; top: 35px;">
+        <ul>
+            <li><a class="" href="零杯1副本.html">BACK</a></li>
+        </ul>
+
+
+    </div>
+
+
+    <div class="total">
+
+
+        <div class="left" style="height: 300px; padding-top: 10px; ">
+            <tr style="border-top: 20px;" class="user2">
+                
+                <td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp留言人：</td>
+                <td ><input id="userId" type="text" name="form_username" /></td>
+            </tr>
+
+            <input style="height: 200px;" id="msgId" class="inputSty" type="text" placeholder="请输入留言" />
+            <input id="btnId" class="btnSty" type="button" value="提交留言" />
+
+        </div>
+
+        <div class="right" style="height: 400px;">
+            <ul id="ulId">
+                <li style="text-align:center">--留言列表--</li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    function gId(n) {
+        return document.getElementById(n)
+    }
+
+    gId('btnId').onclick = function () {
+
+        console.log(gId('userId').value);
+        var val2 = gId('userId').value;
+
+
+        console.log(gId('msgId').value);
+        var val = gId('msgId').value;
+
+        if (val === "" || val2 === "") {
+            alert("留言人或留言不能为空");
+            
+        }
+        else{
+            var time=getNowFormatDate();
+        //创建li
+        var _li = document.createElement('li')
+        _li.innerHTML = time+"  "+val2+":  "+val;
+
+        gId('ulId').appendChild(_li);
+
+        }
+
+       
+        /*var user = document.createElement('li')
+        user.innerHTML = val2;
+        gId('ulId').appendChild(user);*/
+
+
+        //获取时间
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (day >= 0 && day <= 9) {
+                day = "0" + day;
+            }
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + day
+                + " " + date.getHours() + seperator2 + date.getMinutes()
+                + seperator2 + date.getSeconds();
+
+            return currentdate;
+        }
+
+
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>零杯主界面</title>
+    <link type="text/css" href="anime.css" rel="stylesheet">
+    <link type="text/css" href="navigation.css" rel="stylesheet">
+    <link type="text/css" href="slideshow.css" rel="stylesheet"> <!-- 外联焦点轮播图的css文件 -->
+    <script type="text/javascript" src="slideshow.js"></script> <!-- 外联轮播图的js文件 -->
+
+
+</head>
+
+<body style="text-align: center;">
+    <div class="wrap">
+
+        <!--包裹所有元素的容器-->
+        <div class="cube">
+            <!--前面图片 -->
+            <div class="out_front">
+                <img src="1.jpg" class="pic">
+            </div>
+            <!--后面图片 -->
+            <div class="out_back">
+                <img src="2.jpg" class="pic">
+            </div>
+            <!--左面图片 -->
+            <div class="out_left">
+                <img src="3.jpg" class="pic">
+            </div>
+            <!--右面图片 -->
+            <div class="out_right">
+                <img src="4.jpg" class="pic">
+            </div>
+            <!--上面图片 -->
+            <div class="out_top">
+                <img src="5.jpg" class="pic">
+            </div>
+            <!--下面图片 -->
+            <div class="out_bottom">
+                <img src="6.jpg" class="pic">
+            </div>
+
+            <!--小正方体 -->
+            <span class="in_front">
+                <img src="touxiang2.jpg" class="in_pic">
+            </span>
+            <span class="in_back">
+                <img src="touxiang3.jpg" class="in_pic">
+            </span>
+            <span class="in_left">
+                <img src="touxiang4.jpg" class="in_pic">
+            </span>
+            <span class="in_right">
+                <img src="touxiang3.jpg" class="in_pic">
+            </span>
+            <span class="in_top">
+                <img src="touxiang1.jpg" class="in_pic">
+            </span>
+            <span class="in_bottom">
+                <img src="touxiang1.jpg" class="in_pic">
+            </span>
+        </div>
+    </div>
+
+
+    <div id="back" style="position: absolute; width: 100%; height: 100%; z-index: -1;">
+        <img src="back5.jpg" height="100%" width="100%" />
+    </div>
+
+    <div class="navigation">
+        <ul style="left: 230px; position: absolute; top: 20px;">
+
+            <li><a class="" href="TimeLine.html">TimeLine</a></li>
+            <li><a class="" href="heying.html">大牛合影</a></li>
+            <li><a class="" href="message box.html">留言</a></li>
+            <li><a class="" href="#">待更新</a></li>
+            <!-- <li><a class="" href="#">AI1</a></li>
+            <li><a class="" href="#">AI1</a></li> -->
+        </ul>
+
+    </div>
+
+
+
+
+
+
+    <div id="container" style="margin: 0 atuo; ">
+
+
+        <div id="list" style="left:-530px">
+
+            <a href="lishishi.html">
+                <video class="img" style="text-align: center;" autoplay muted="muted">
+                    <source src="阿尔法狗击败李世石.mp4">
+                </video>
+            </a>
+
+            <a href="robot.html">
+                <video class="img" style="text-align: center;" autoplay muted="muted">
+                    <source src="机器人乐队.mp4">
+                </video>
+            </a>
+            <a href="ai.html">
+                <video class="img" style="text-align: center;" autoplay muted="muted">
+                    <source src="人工智能警察.mp4">
+                </video>
+            </a>
+            <a href="wuren.html">
+                <video class="img" style="text-align: center;" autoplay muted="muted">
+                    <source src="特斯拉无人驾驶.mp4">
+                </video>
+            </a>
+            <a href="tesilacar.html">
+
+
+                <video class="img" style="text-align: center;" autoplay muted="muted">
+                    <source src="特斯拉无人驾驶汽车.mp4">
+                </video></a>
+            <a href="lishishi.html">
+                <video class="img" style="text-align: center;" autoplay muted="muted">
+                    <source src="阿尔法狗击败李世石.mp4">
+                </video>
+            </a>
+            <a href="robot.html">
+                <video class="img" style="text-align: center;" autoplay muted="muted">
+                    <source src="机器人乐队.mp4">
+                </video>
+            </a>
+
+        </div>
+
+        <div id="buttons">
+            <span index="1" class='on'></span>
+            <span index="2" class></span>
+            <span index="3" class></span>
+            <span index="4" class></span>
+            <span index="5" class></span>
+        </div>
+
+        <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+        <a href="javascript:;" id="next" class="arrow">&gt;</a>
+
+
+    </div>
+
+</body>
+
+</html>
