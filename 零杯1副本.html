@@ -2,17 +2,23 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
+   
     <title>零杯主界面</title>
     <link type="text/css" href="anime.css" rel="stylesheet">
     <link type="text/css" href="navigation.css" rel="stylesheet">
     <link type="text/css" href="slideshow.css" rel="stylesheet"> <!-- 外联焦点轮播图的css文件 -->
     <script type="text/javascript" src="slideshow.js"></script> <!-- 外联轮播图的js文件 -->
+   
+    <link type="text/css" rel="stylesheet" href="custom.css"> <!-- 这个表里有鼠标的初始样式 -->
 
+    <IFRAME style="z-index: 2; position:absolute; left:-400px; top: 400px ; border-left: 150px; border: 0ch; "  height="300px" width="790px" scrolling="yes" src="https://aezqsss.github.io/kanban/demo.html" ></IFRAME>
 
 </head>
 
 <body style="text-align: center;">
+    
+
     <div class="wrap">
 
         <!--包裹所有元素的容器-->
@@ -145,6 +151,19 @@
 
 
     </div>
+
+    <!-- 背景烟花效果START-->
+	<canvas class="fireworks" style="position: fixed; left: 0px; top: 0px; z-index: 100; pointer-events: none; width: 1536px; height: 728px;" width="3072" height="1456"></canvas>
+    <script type="text/javascript" src="fireworks-anime.js"></script>
+    <script type="text/javascript" src="fireworks-fireworks-modify.js"></script>
+    <!-- 背景烟花效果END-->
+    
+        
+    
+    <script src="forbidion.js"></script><!-- 这个是用来隐藏右键菜单的 -->
+    
+    <!-- 鼠标点击特效 -->
+    <script type="text/javascript" src="mouse.js"></script>
 
 </body>
 
